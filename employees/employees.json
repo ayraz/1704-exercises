@@ -1,0 +1,37 @@
+[
+    {
+        "title": "Staff",
+        "first_name": "Vasiliy",
+        "last_name": "Stiles",
+        "dept_name": "Customer Service",
+        "salary": "91638"
+    },
+    {
+        "title": "Senior Staff",
+        "first_name": "Sudharsan",
+        "last_name": "Kamble",
+        "dept_name": "Customer Service",
+        "salary": "86054"
+    },
+    {
+        "title": "Senior Staff",
+        "first_name": "Radhika",
+        "last_name": "Baaz",
+        "dept_name": "Marketing",
+        "salary": "78196"
+    },
+    {
+        "title": "Staff",
+        "first_name": "Stevo",
+        "last_name": "Takanami",
+        "dept_name": "Sales",
+        "salary": "67399"
+    },
+    {
+        "title": "Senior Engineer",
+        "first_name": "Jackson",
+        "last_name": "Cheshire",
+        "dept_name": "Production",
+        "salary": "64229"
+    }
+]
