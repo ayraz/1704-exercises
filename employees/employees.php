@@ -2,10 +2,7 @@
 // show me my errors pls
 ini_set('display_errors', 1);
 
-// db credentials
-$servername = "localhost";
-$username = "root";
-$password = "root";
+require 'config.php';
 
 $query = "SELECT title, first_name, last_name, dept_name, salary
     -- we need a group by and take max salary of each employee to exclude raises
@@ -28,6 +25,20 @@ $query = "SELECT title, first_name, last_name, dept_name, salary
     -- take top 5 records
     ORDER BY salary DESC LIMIT 5";
 
+/**
+ * Writes a given json to a file in /tmp directory.
+ * 
+ * @param string $json A encoded json string to be written.
+ * @param string $fileName Name to be used for a file.
+ */
+function writeJson($json, $fileName) {
+    // open a tmp file, write our json, and close it
+    $file = fopen("/tmp/$fileName", "w") or die("Unable to open file!");
+    fwrite($file, $json);
+    fclose($file);
+    echo "JSON was dumped!\n";
+}
+
 try {
     // open db connection
     $conn = new PDO("mysql:host=$servername;dbname=employees", $username, $password);
@@ -44,14 +55,13 @@ try {
 
     // convert over employee array to json
     $json = json_encode($emps);
+    writeJson($json, 'employees.json');
 
-    // open a tmp file, write our json, and close it
-    $file = fopen("/tmp/employees.json", "w") or die("Unable to open file!");
-    fwrite($file, $json);
-    fclose($file);
-    echo "JSON was dumped!\n";
 } catch(PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
 }
+
+// close connection
+$conn = null
 
 ?>
